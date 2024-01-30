@@ -8,7 +8,7 @@
 
 - React
 - zustand
-- RTK Query
+- React Query
 - MUI
 - React Hook Form
 - zod
