@@ -7,8 +7,9 @@
 ## Stack
 
 - React
-- Redux Toolkit
+- zustand
 - RTK Query
+- MUI
 - React Hook Form
 - zod
 
