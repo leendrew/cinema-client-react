@@ -1,5 +1,7 @@
 import React from 'react';
 
+// TODO: refactor to separate text and icon into 2 different components
+
 export function LogoIcon({ ...rest }: React.SVGProps<SVGSVGElement>) {
   return (
     <>
