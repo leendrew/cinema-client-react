@@ -1,15 +1,7 @@
-import { envConfig } from '@/config';
 import { create } from 'zustand';
 import { devtools, persist } from 'zustand/middleware';
-
-export interface User {
-  phone: string;
-  firstname: string;
-  middlename: string;
-  lastname: string;
-  email: string;
-  city: string;
-}
+import { envConfig } from '@/config';
+import type { User } from '../user';
 
 export type Token = string;
 
@@ -22,7 +14,7 @@ interface AuthState {
 const initialState: AuthState = {
   user: null,
   token: null,
-  isAuth: true,
+  isAuth: false,
 };
 
 interface AuthActions {
@@ -33,7 +25,7 @@ interface AuthActions {
 
 export const authStore = create<AuthState>()(
   devtools(
-    persist(() => initialState, { name: 'cinema/ls' }),
+    persist(() => initialState, { name: 'cinema/lss' }),
     { name: 'auth', enabled: envConfig.isDev },
   ),
 );

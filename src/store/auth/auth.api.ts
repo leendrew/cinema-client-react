@@ -1,7 +1,9 @@
-import type { ApiResponseSuccess, ApiResponseFail } from '@/shared/api';
-import type { User, Token } from './auth.store';
+import { axios } from '@/config';
+import type { ApiResponseSuccess } from '@/config';
+import type { Token } from './auth.store';
+import type { User } from '../user';
 
-interface GetOtpPayload {
+export interface GetOtpPayload {
   phone: string;
 }
 
@@ -9,9 +11,7 @@ interface GetOtpResponseSuccess extends ApiResponseSuccess {
   retryDelay: number;
 }
 
-type GetOtpResponse = GetOtpResponseSuccess | ApiResponseFail;
-
-interface LoginPayload {
+export interface LoginPayload {
   phone: string;
   code: number;
 }
@@ -21,15 +21,11 @@ interface LoginResponseSuccess extends ApiResponseSuccess {
   token: Token;
 }
 
-type LoginResponse = LoginResponseSuccess | ApiResponseFail;
-
-interface GetSessionPayload {}
-
-interface GetSessionResponseSuccess extends ApiResponseSuccess {
-  user: User;
-  token: Token;
-}
-
-type GetSessionResponse = GetSessionResponseSuccess | ApiResponseFail;
-
-export const authApi = {};
+export const authApi = {
+  getOtp(payload: GetOtpPayload) {
+    return axios.post<GetOtpResponseSuccess>('/auth/otp', payload);
+  },
+  login(payload: LoginPayload) {
+    return axios.post<LoginResponseSuccess>('/users/signin', payload);
+  },
+};
