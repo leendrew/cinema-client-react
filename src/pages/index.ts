@@ -2,3 +2,4 @@ export * from './MainPage';
 export * from './LoginPage';
 export * from './ProfilePage';
 export * from './TicketsPage';
+export * from './MoviePage';
