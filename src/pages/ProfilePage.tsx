@@ -12,16 +12,17 @@ export function ProfilePage() {
     queryKey: ['user'],
     queryFn: userApi.getSession,
   });
-  const user = userQuery.data?.data.user;
 
   // TODO: skeleton
-  if (!userQuery.isLoading) {
+  if (userQuery.isLoading) {
     return (
       <>
         <CircularProgress />
       </>
     );
   }
+
+  const user = userQuery.data?.data.user;
 
   if (!user) {
     return <Navigate to={ROUTER_PATHS.main} />;
