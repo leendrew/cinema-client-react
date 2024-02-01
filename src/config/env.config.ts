@@ -14,7 +14,7 @@ const env = {
 type EnvConfig = EnvConfigType<typeof env>;
 
 export const envConfig = Object.entries(env).reduce((acc, [key, value]) => {
-  // @ts-expect-error just because
+  // @ts-expect-error object keys
   acc[key] = checkEnv(value.key, value.type);
   return acc;
 }, {} as EnvConfig);
