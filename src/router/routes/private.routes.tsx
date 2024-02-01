@@ -1,6 +1,6 @@
 import type { RouteObject } from 'react-router-dom';
 import { MainLayout } from '@/shared/ui';
-import { MainPage } from '@/pages';
+import { ProfilePage } from '@/pages';
 import { WithAuth } from '@/hocs';
 import { ROUTER_PATHS } from '@/shared/constants';
 
@@ -9,12 +9,12 @@ export const privateRoutes = {
   element: <WithAuth />,
   children: [
     {
-      path: ROUTER_PATHS.main,
+      path: ROUTER_PATHS.profile,
       element: <MainLayout />,
       children: [
         {
           index: true,
-          element: <MainPage />,
+          element: <ProfilePage />,
         },
       ],
     },
