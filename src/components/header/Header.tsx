@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { Box, Container, Stack } from '@mui/material';
 import { Logout as LogoutIcon } from '@mui/icons-material';
-import { authStore, authActions } from '@/store/auth';
+import { authStore, authActions } from '@/store';
 import { ROUTER_PATHS } from '@/shared/constants';
 import { Button } from '@/shared/ui/button';
 import { LogoIcon } from '@/shared/ui/icons';
@@ -16,6 +16,7 @@ export function Header() {
       <Box
         component="header"
         sx={{
+          // TODO: CSS vars
           height: '5.125rem',
           borderBottom: '0.0625rem solid #CED2DA',
         }}
@@ -28,19 +29,6 @@ export function Header() {
               </Box>
             </Link>
             {isAuth && (
-              <Box
-                sx={{
-                  marginLeft: 'auto',
-                }}
-              >
-                <Link to={ROUTER_PATHS.auth.login}>
-                  <Button variant="text" startIcon={<LogoutIcon />} onClick={onLogoutClick}>
-                    Выйти
-                  </Button>
-                </Link>
-              </Box>
-            )}
-            {!isAuth && (
               <>
                 <Link to={ROUTER_PATHS.profile}>
                   <Button>Профиль</Button>
@@ -50,6 +38,24 @@ export function Header() {
                 </Link>
               </>
             )}
+            <Box
+              sx={{
+                marginLeft: 'auto',
+              }}
+            >
+              {isAuth && (
+                <Link to={ROUTER_PATHS.auth.login}>
+                  <Button variant="text" startIcon={<LogoutIcon />} onClick={onLogoutClick}>
+                    Выйти
+                  </Button>
+                </Link>
+              )}
+              {!isAuth && (
+                <Link to={ROUTER_PATHS.auth.login}>
+                  <Button variant="text">Войти</Button>
+                </Link>
+              )}
+            </Box>
           </Stack>
         </Container>
       </Box>
