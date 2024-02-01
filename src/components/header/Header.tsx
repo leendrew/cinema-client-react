@@ -3,8 +3,7 @@ import { Box, Container, Stack } from '@mui/material';
 import { Logout as LogoutIcon } from '@mui/icons-material';
 import { authStore, authActions } from '@/store';
 import { ROUTER_PATHS } from '@/shared/constants';
-import { Button } from '@/shared/ui/button';
-import { LogoIcon } from '@/shared/ui/icons';
+import { Button, LogoIcon } from '@/shared/ui';
 
 export function Header() {
   const isAuth = authStore((state) => state.isAuth);
@@ -33,7 +32,7 @@ export function Header() {
                 <Link to={ROUTER_PATHS.profile}>
                   <Button>Профиль</Button>
                 </Link>
-                <Link to={ROUTER_PATHS.profile}>
+                <Link to={ROUTER_PATHS.tickets}>
                   <Button>Билеты</Button>
                 </Link>
               </>

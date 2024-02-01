@@ -4,7 +4,7 @@ import { Controller, useForm } from 'react-hook-form';
 import { useMutation } from '@tanstack/react-query';
 import { PatternFormat } from 'react-number-format';
 import { Box, Stack, TextField, Typography } from '@mui/material';
-import { Button } from '@/shared/ui/button';
+import { Button } from '@/shared/ui';
 import { profileSchema, serializeData } from '@/shared/schemas';
 import type { ProfileSchema } from '@/shared/schemas';
 import { userApi } from '@/store';

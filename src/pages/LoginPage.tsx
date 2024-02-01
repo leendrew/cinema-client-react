@@ -6,7 +6,7 @@ import { Controller, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { PatternFormat } from 'react-number-format';
 import { TextField, Stack, Typography, Box } from '@mui/material';
-import { Button } from '@/shared/ui/button';
+import { Button } from '@/shared/ui';
 import {
   ERROR_MESSAGE_API,
   getOtpSchema,

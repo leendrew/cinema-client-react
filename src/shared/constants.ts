@@ -11,5 +11,5 @@ export const ROUTER_PATHS = {
 } as const;
 
 export const ROUTER_PATHS_DYNAMIC = {
-  getMovie: (id: number) => `/movies/${id}`,
+  getMovie: (id: number | string) => `/movies/${id}`,
 };
