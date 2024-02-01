@@ -9,9 +9,7 @@ const nameSchema = z
 
 const middlenameSchema = z.string().max(MAX_NAME_LEN, ERROR_MESSAGE_MAX_NAME_LEN);
 
-const emailSchema = z
-  .string({ required_error: ERROR_MESSAGE.required })
-  .email(ERROR_MESSAGE.incorrect);
+const emailSchema = z.string().email(ERROR_MESSAGE.incorrect);
 
 export const profileSchema = z.object({
   firstname: nameSchema,
