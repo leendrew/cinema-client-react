@@ -43,11 +43,11 @@ export interface Movie {
   country: Country;
 }
 
-interface GetTodayMoviesResponseSuccess extends ApiResponseSuccess {
+interface GetTodayResponse extends ApiResponseSuccess {
   films: Movie[];
 }
 
-interface GetMovieResponseSuccess {
+interface GetOneResponse extends ApiResponseSuccess {
   film: Movie;
 }
 
@@ -80,7 +80,7 @@ interface Schedule {
   seances: ScheduleSeance[];
 }
 
-interface getMovieScheduleResponseSuccess {
+interface GetScheduleResponse extends ApiResponseSuccess {
   schedules: Schedule[];
 }
 
@@ -108,28 +108,28 @@ type PurchasedTicket = {
   tickets: PayedTicket[];
 } & Pick<User, 'phone'> & { status: TicketStatus };
 
-interface BuyTicketResponseSuccess {
+interface BuyTicketResponse extends ApiResponseSuccess {
   order: PurchasedTicket;
 }
 
-interface GetOrdersResponseSuccess {
+interface GetOrdersResponse extends ApiResponseSuccess {
   orders: PurchasedTicket[];
 }
 
 export const moviesApi = {
-  getTodayMovies() {
-    return axios.get<GetTodayMoviesResponseSuccess>('/cinema/today');
+  getToday() {
+    return axios.get<GetTodayResponse>('/cinema/today');
   },
-  getMovie(movieId: number | string) {
-    return axios.get<GetMovieResponseSuccess>(`/cinema/film/${movieId}`);
+  getOne(movieId: number | string) {
+    return axios.get<GetOneResponse>(`/cinema/film/${movieId}`);
   },
-  getMovieSchedule(movieId: number | string) {
-    return axios.get<getMovieScheduleResponseSuccess>(`/cinema/film/${movieId}/schedule`);
+  getSchedule(movieId: number | string) {
+    return axios.get<GetScheduleResponse>(`/cinema/film/${movieId}/schedule`);
   },
   buyTicket(payload: BuyTicketPayload) {
-    return axios.post<BuyTicketResponseSuccess>('/cinema/payment', payload);
+    return axios.post<BuyTicketResponse>('/cinema/payment', payload);
   },
   getTickets() {
-    return axios.get<GetOrdersResponseSuccess>('/cinema/orders');
+    return axios.get<GetOrdersResponse>('/cinema/orders');
   },
 };

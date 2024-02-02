@@ -9,7 +9,7 @@ export interface User {
   email?: string;
 }
 
-interface GetSessionResponseSuccess extends ApiResponseSuccess {
+interface GetSessionResponse extends ApiResponseSuccess {
   user: User;
 }
 
@@ -18,13 +18,13 @@ export interface UpdateProfilePayload {
   profile: Omit<User, 'phone'>;
 }
 
-interface UpdateProfileResponseSuccess extends ApiResponseSuccess {}
+interface UpdateProfileResponse extends ApiResponseSuccess {}
 
 export const userApi = {
   getSession() {
-    return axios.get<GetSessionResponseSuccess>('/users/session');
+    return axios.get<GetSessionResponse>('/users/session');
   },
   updateProfile(payload: UpdateProfilePayload) {
-    return axios.patch<UpdateProfileResponseSuccess>('/users/profile', payload);
+    return axios.patch<UpdateProfileResponse>('/users/profile', payload);
   },
 };
