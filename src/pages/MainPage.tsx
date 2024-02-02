@@ -5,15 +5,16 @@ import { moviesApi } from '@/store';
 import { MovieCard } from '@/components';
 import { ROUTER_PATHS_DYNAMIC } from '@/shared/constants';
 
-// TODO: refactor this shit
+// TODO: refactor: extract movies list
 
 export function MainPage() {
   const navigate = useNavigate();
   const todayMoviesQuery = useQuery({
     queryKey: ['todayMovies'],
-    queryFn: moviesApi.getTodayMovies,
+    queryFn: moviesApi.getToday,
   });
 
+  // TODO: skeleton
   if (todayMoviesQuery.isLoading) {
     return (
       <>
@@ -24,7 +25,7 @@ export function MainPage() {
 
   const movies = todayMoviesQuery.data?.data.films;
 
-  const onMovieClick = (movieId: number | string) => {
+  const onMoreDetailsClick = (movieId: number | string) => {
     const path = ROUTER_PATHS_DYNAMIC.getMovie(movieId);
     navigate(path);
   };
@@ -40,7 +41,7 @@ export function MainPage() {
           <Grid container spacing={4}>
             {movies.map((movie) => (
               <Grid key={movie.id} item xs={12} sm={6} md={4}>
-                <MovieCard movie={movie} onMovieClick={onMovieClick} />
+                <MovieCard movie={movie} onMoreDetailsClick={onMoreDetailsClick} />
               </Grid>
             ))}
           </Grid>
