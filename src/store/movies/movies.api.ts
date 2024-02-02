@@ -57,20 +57,29 @@ interface Seat {
 }
 
 type PayedTicket = {
-  filmId: string;
+  filmId: Movie['id'];
   seance: Seance;
 } & Pick<User, 'phone'> &
   Seat;
 
 type Seance = Pick<Schedule, 'date'> & Pick<ScheduleSeance, 'time'>;
 
-interface ScheduleSeance {
+type SeatType = 'BLOCKED' | 'ECONOM' | 'COMFORT';
+
+interface Place {
+  price: number;
+  type: SeatType;
+}
+
+export interface Hall {
+  name: string;
+  places: Place[];
+}
+
+export interface ScheduleSeance {
   // 'hh:mm';
   time: string;
-  hall: {
-    name: string;
-    places: [];
-  };
+  hall: Hall;
   payedTickets: PayedTicket[];
 }
 
@@ -93,7 +102,7 @@ interface DebitCard {
 }
 
 interface BuyTicketPayload {
-  filmId: string;
+  filmId: Movie['id'];
   person: Pick<Required<User>, 'firstname' | 'lastname' | 'phone'>;
   debitCard: DebitCard;
   seance: Seance;
