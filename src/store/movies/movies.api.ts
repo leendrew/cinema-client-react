@@ -112,9 +112,10 @@ export interface BuyTicketPayload {
   tickets: Seat[];
 }
 
-type TicketStatus = 'PAYED';
+export type TicketStatus = 'PAYED' | 'CANCELED';
 
 type PurchasedTicket = {
+  _id: string;
   filmName: string;
   orderNumber: number;
   tickets: PayedTicket[];
@@ -127,6 +128,12 @@ export interface BuyTicketResponse extends ApiResponseSuccess {
 interface GetOrdersResponse extends ApiResponseSuccess {
   orders: PurchasedTicket[];
 }
+
+export interface CancelTicketPayload {
+  orderId: string;
+}
+
+interface CancelTicketResponse extends ApiResponseSuccess {}
 
 export const moviesApi = {
   getToday() {
@@ -143,5 +150,8 @@ export const moviesApi = {
   },
   getTickets() {
     return axios.get<GetOrdersResponse>('/cinema/orders');
+  },
+  cancelTicket(payload: CancelTicketPayload) {
+    return axios.put<CancelTicketResponse>('/cinema/orders/cancel', payload);
   },
 };

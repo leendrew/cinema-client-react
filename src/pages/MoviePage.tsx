@@ -619,7 +619,7 @@ export function MoviePage() {
                                   return (
                                     columnValues && (
                                       <Typography key={row}>
-                                        {row} - {columnValues}
+                                        {row} ряд - {columnValues}
                                       </Typography>
                                     )
                                   );
@@ -920,7 +920,7 @@ export function MoviePage() {
                                         return (
                                           columnValues && (
                                             <Typography key={row}>
-                                              {row} - {columnValues}
+                                              {row} ряд - {columnValues}
                                             </Typography>
                                           )
                                         );

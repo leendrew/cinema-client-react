@@ -4,7 +4,7 @@ import type { ModalProps as MuiModalProps } from '@mui/material';
 import { Close as CloseIcon } from '@mui/icons-material';
 
 interface ModalBaseProps extends MuiModalProps {
-  topHeaderSlot: React.ReactElement;
+  topHeaderSlot?: React.ReactElement;
   onClose: () => void;
 }
 
