@@ -3,7 +3,6 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["src/*"],
-      "@ui": ["src/shared/ui"],
     },
 
     "target": "ES2020",
