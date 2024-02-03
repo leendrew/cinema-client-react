@@ -3,18 +3,20 @@ import * as z from 'zod';
 export const ERROR_MESSAGE = {
   api: 'Произошла ошибка',
   required: 'Поле является обязательным',
-  code: 'Код должен содержать',
+  codeBase: 'Код должен содержать',
   combinationAlphabet:
     'Значение должно быть задано с использованием одного из следующих алфавитов: кириллического, латинского',
   differentAlphabet: 'Значения заданы с использованием разных алфавитов',
   incorrect: 'Поле заполнено некорректно',
   incorrectFormat: 'Некорректный формат',
-  maxNameLen: 'Поле не может быть больше',
+  maxNameLenBase: 'Поле не может быть больше',
 };
 
 export const ERROR_MESSAGE_API = 'Произошла ошибка';
 
 export const MAX_NAME_LEN = 60;
+
+export const ERROR_MESSAGE_MAX_NAME_LEN = `${ERROR_MESSAGE.maxNameLenBase} ${MAX_NAME_LEN} символов`;
 
 export const phoneSchema = z
   .string({ required_error: ERROR_MESSAGE.required })
@@ -22,6 +24,11 @@ export const phoneSchema = z
     (value) => /^([+]?[\s0-9]+)?(\d{3}|[(]?[0-9]+[)])?([-]?[\s]?[0-9])+$/.test(value),
     ERROR_MESSAGE.incorrect,
   );
+export const nameSchema = z
+  .string({ required_error: ERROR_MESSAGE.required })
+  .min(1, ERROR_MESSAGE.required)
+  .max(MAX_NAME_LEN, ERROR_MESSAGE_MAX_NAME_LEN);
+export const middlenameSchema = z.string().max(MAX_NAME_LEN, ERROR_MESSAGE_MAX_NAME_LEN);
 
 const serializeDataRules = {
   /**
