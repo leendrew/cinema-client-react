@@ -51,7 +51,7 @@ interface GetOneResponse extends ApiResponseSuccess {
   film: Movie;
 }
 
-interface Seat {
+export interface Seat {
   row: number;
   column: number;
 }
@@ -66,14 +66,14 @@ type Seance = Pick<Schedule, 'date'> & Pick<ScheduleSeance, 'time'>;
 
 type SeatType = 'BLOCKED' | 'ECONOM' | 'COMFORT';
 
-interface Place {
+export interface Place {
   price: number;
   type: SeatType;
 }
 
 export interface Hall {
   name: string;
-  places: Place[];
+  places: Place[][];
 }
 
 export interface ScheduleSeance {
@@ -101,7 +101,7 @@ interface DebitCard {
   cvv: string;
 }
 
-interface BuyTicketPayload {
+export interface BuyTicketPayload {
   filmId: Movie['id'];
   person: Pick<Required<User>, 'firstname' | 'lastname' | 'phone'>;
   debitCard: DebitCard;
