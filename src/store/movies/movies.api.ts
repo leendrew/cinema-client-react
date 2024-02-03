@@ -93,7 +93,10 @@ interface GetScheduleResponse extends ApiResponseSuccess {
   schedules: Schedule[];
 }
 
-interface DebitCard {
+export type BuyTicketPerson = Pick<Required<User>, 'firstname' | 'lastname' | 'phone'> &
+  Pick<User, 'middlename'>;
+
+export interface DebitCard {
   // '#### ####'
   pan: string;
   // '##/##'
@@ -103,7 +106,7 @@ interface DebitCard {
 
 export interface BuyTicketPayload {
   filmId: Movie['id'];
-  person: Pick<Required<User>, 'firstname' | 'lastname' | 'phone'>;
+  person: BuyTicketPerson;
   debitCard: DebitCard;
   seance: Seance;
   tickets: Seat[];
@@ -117,7 +120,7 @@ type PurchasedTicket = {
   tickets: PayedTicket[];
 } & Pick<User, 'phone'> & { status: TicketStatus };
 
-interface BuyTicketResponse extends ApiResponseSuccess {
+export interface BuyTicketResponse extends ApiResponseSuccess {
   order: PurchasedTicket;
 }
 
