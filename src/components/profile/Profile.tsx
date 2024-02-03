@@ -35,7 +35,7 @@ export function Profile({ user }: ProfileProps) {
   const updateProfileMutation = useMutation({
     mutationFn: userApi.updateProfile,
     onError: (error: Error) => {
-      // @ts-expect-error error
+      // @ts-expect-error type issue
       const message = error.response.data.reason || ERROR_MESSAGE_API;
       enqueueSnackbar({ variant: 'error', message });
     },
@@ -46,7 +46,6 @@ export function Profile({ user }: ProfileProps) {
     const serializedPhone = serializeData({ phone });
     const serializedProfile = serializeData(profile);
     const payload = { phone: serializedPhone, profile: serializedProfile };
-    console.log('pp', payload);
     await updateProfileMutation.mutateAsync(payload as UpdateProfilePayload);
     enqueueSnackbar({ variant: 'success', message: 'Профиль обновлен' });
   });
@@ -75,7 +74,7 @@ export function Profile({ user }: ProfileProps) {
                 type="text"
                 placeholder="Введите имя..."
                 error={!!errors.firstname}
-                helperText={errors?.firstname?.message as string}
+                helperText={errors?.firstname?.message}
                 {...field}
               />
             )}
@@ -91,7 +90,7 @@ export function Profile({ user }: ProfileProps) {
                 type="text"
                 placeholder="Введите фамилию..."
                 error={!!errors.lastname}
-                helperText={errors?.lastname?.message as string}
+                helperText={errors?.lastname?.message}
                 {...field}
               />
             )}
@@ -126,7 +125,7 @@ export function Profile({ user }: ProfileProps) {
                 customInput={TextField}
                 inputRef={ref}
                 error={!!errors.phone}
-                helperText={errors?.phone?.message as string}
+                helperText={errors?.phone?.message}
                 {...rest}
               />
             )}

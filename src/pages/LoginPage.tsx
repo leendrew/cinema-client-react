@@ -41,7 +41,7 @@ export function LoginPage() {
     },
     // TODO: error typing support
     onError: (error: Error) => {
-      // @ts-expect-error error
+      // @ts-expect-error type issue
       const message = error.response.data.reason || ERROR_MESSAGE_API;
       enqueueSnackbar({ variant: 'error', message });
     },
@@ -53,7 +53,7 @@ export function LoginPage() {
       navigate(ROUTER_PATHS.main);
     },
     onError: (error) => {
-      // @ts-expect-error error
+      // @ts-expect-error type issue
       const message = error.response.data.reason || ERROR_MESSAGE_API;
       enqueueSnackbar({ variant: 'error', message });
       enqueueSnackbar({ variant: 'error', message: message });
@@ -143,7 +143,7 @@ export function LoginPage() {
               customInput={TextField}
               inputRef={ref}
               error={!!errors.phone}
-              helperText={errors?.phone?.message as string}
+              helperText={errors?.phone?.message}
               {...rest}
             />
           )}
@@ -157,7 +157,7 @@ export function LoginPage() {
                 type="number"
                 placeholder="Проверочный код"
                 error={!!errors.code}
-                helperText={errors?.code?.message as string}
+                helperText={errors?.code?.message}
                 inputProps={{ maxLength: MAX_OTP_LEN }}
                 onInput={onOtpCodeInput}
                 {...field}
@@ -191,7 +191,14 @@ export function LoginPage() {
               }}
             >
               {timer.isExpired && (
-                <Button variant="text" loading={isLoading} onClick={resendOtpCode}>
+                <Button
+                  sx={{
+                    width: '100%',
+                  }}
+                  variant="text"
+                  loading={isLoading}
+                  onClick={resendOtpCode}
+                >
                   Запросить код еще раз
                 </Button>
               )}

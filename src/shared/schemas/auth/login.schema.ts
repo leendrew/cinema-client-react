@@ -5,7 +5,7 @@ export const MAX_PHONE_LEN = 11;
 
 export const MAX_OTP_LEN = 6;
 
-const ERROR_MESSAGE_OTP_LEN = `${ERROR_MESSAGE.code} ${MAX_OTP_LEN} цифр`;
+const ERROR_MESSAGE_OTP_LEN = `${ERROR_MESSAGE.codeBase} ${MAX_OTP_LEN} цифр`;
 
 export const codeSchema = z
   .string({ required_error: ERROR_MESSAGE.required })

@@ -43,34 +43,43 @@ export interface Movie {
   country: Country;
 }
 
-interface GetTodayMoviesResponseSuccess extends ApiResponseSuccess {
+interface GetTodayResponse extends ApiResponseSuccess {
   films: Movie[];
 }
 
-interface GetMovieResponseSuccess {
+interface GetOneResponse extends ApiResponseSuccess {
   film: Movie;
 }
 
-interface Seat {
+export interface Seat {
   row: number;
   column: number;
 }
 
 type PayedTicket = {
-  filmId: string;
+  filmId: Movie['id'];
   seance: Seance;
 } & Pick<User, 'phone'> &
   Seat;
 
 type Seance = Pick<Schedule, 'date'> & Pick<ScheduleSeance, 'time'>;
 
-interface ScheduleSeance {
+type SeatType = 'BLOCKED' | 'ECONOM' | 'COMFORT';
+
+export interface Place {
+  price: number;
+  type: SeatType;
+}
+
+export interface Hall {
+  name: string;
+  places: Place[][];
+}
+
+export interface ScheduleSeance {
   // 'hh:mm';
   time: string;
-  hall: {
-    name: string;
-    places: [];
-  };
+  hall: Hall;
   payedTickets: PayedTicket[];
 }
 
@@ -80,11 +89,14 @@ interface Schedule {
   seances: ScheduleSeance[];
 }
 
-interface getMovieScheduleResponseSuccess {
+interface GetScheduleResponse extends ApiResponseSuccess {
   schedules: Schedule[];
 }
 
-interface DebitCard {
+export type BuyTicketPerson = Pick<Required<User>, 'firstname' | 'lastname' | 'phone'> &
+  Pick<User, 'middlename'>;
+
+export interface DebitCard {
   // '#### ####'
   pan: string;
   // '##/##'
@@ -92,9 +104,9 @@ interface DebitCard {
   cvv: string;
 }
 
-interface BuyTicketPayload {
-  filmId: string;
-  person: Pick<Required<User>, 'firstname' | 'lastname' | 'phone'>;
+export interface BuyTicketPayload {
+  filmId: Movie['id'];
+  person: BuyTicketPerson;
   debitCard: DebitCard;
   seance: Seance;
   tickets: Seat[];
@@ -108,28 +120,28 @@ type PurchasedTicket = {
   tickets: PayedTicket[];
 } & Pick<User, 'phone'> & { status: TicketStatus };
 
-interface BuyTicketResponseSuccess {
+export interface BuyTicketResponse extends ApiResponseSuccess {
   order: PurchasedTicket;
 }
 
-interface GetOrdersResponseSuccess {
+interface GetOrdersResponse extends ApiResponseSuccess {
   orders: PurchasedTicket[];
 }
 
 export const moviesApi = {
-  getTodayMovies() {
-    return axios.get<GetTodayMoviesResponseSuccess>('/cinema/today');
+  getToday() {
+    return axios.get<GetTodayResponse>('/cinema/today');
   },
-  getMovie(movieId: number | string) {
-    return axios.get<GetMovieResponseSuccess>(`/cinema/film/${movieId}`);
+  getOne(movieId: number | string) {
+    return axios.get<GetOneResponse>(`/cinema/film/${movieId}`);
   },
-  getMovieSchedule(movieId: number | string) {
-    return axios.get<getMovieScheduleResponseSuccess>(`/cinema/film/${movieId}/schedule`);
+  getSchedule(movieId: number | string) {
+    return axios.get<GetScheduleResponse>(`/cinema/film/${movieId}/schedule`);
   },
   buyTicket(payload: BuyTicketPayload) {
-    return axios.post<BuyTicketResponseSuccess>('/cinema/payment', payload);
+    return axios.post<BuyTicketResponse>('/cinema/payment', payload);
   },
   getTickets() {
-    return axios.get<GetOrdersResponseSuccess>('/cinema/orders');
+    return axios.get<GetOrdersResponse>('/cinema/orders');
   },
 };

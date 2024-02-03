@@ -7,7 +7,7 @@ export interface GetOtpPayload {
   phone: string;
 }
 
-interface GetOtpResponseSuccess extends ApiResponseSuccess {
+interface GetOtpResponse extends ApiResponseSuccess {
   retryDelay: number;
 }
 
@@ -16,16 +16,16 @@ export interface LoginPayload {
   code: number;
 }
 
-interface LoginResponseSuccess extends ApiResponseSuccess {
+interface LoginResponse extends ApiResponseSuccess {
   user: User;
   token: Token;
 }
 
 export const authApi = {
   getOtp(payload: GetOtpPayload) {
-    return axios.post<GetOtpResponseSuccess>('/auth/otp', payload);
+    return axios.post<GetOtpResponse>('/auth/otp', payload);
   },
   login(payload: LoginPayload) {
-    return axios.post<LoginResponseSuccess>('/users/signin', payload);
+    return axios.post<LoginResponse>('/users/signin', payload);
   },
 };

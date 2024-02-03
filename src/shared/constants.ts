@@ -7,9 +7,9 @@ export const ROUTER_PATHS = {
   },
   profile: '/profile',
   tickets: '/tickets',
-  movie: '/movies/:id',
+  movie: '/movies/:movieId',
 } as const;
 
 export const ROUTER_PATHS_DYNAMIC = {
-  getMovie: (id: number | string) => `/movies/${id}`,
+  getMovie: (movieId: number | string) => `/movies/${movieId}`,
 };

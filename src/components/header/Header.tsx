@@ -15,9 +15,10 @@ export function Header() {
       <Box
         component="header"
         sx={{
-          // TODO: CSS vars
           height: '5.125rem',
-          borderBottom: '0.0625rem solid #CED2DA',
+          borderBottom: '0.0625rem',
+          borderStyle: 'solid',
+          borderColor: 'divider',
         }}
       >
         <Container sx={{ height: '100%' }}>

@@ -5,10 +5,10 @@ import { envConfig } from '@/config';
 
 interface MovieCardProps {
   movie: Movie;
-  onMovieClick: (movieId: string | number) => void;
+  onMoreDetailsClick: (movieId: string | number) => void;
 }
 
-export function MovieCard({ movie, onMovieClick }: MovieCardProps) {
+export function MovieCard({ movie, onMoreDetailsClick }: MovieCardProps) {
   return (
     <>
       <Card component="article">
@@ -18,6 +18,7 @@ export function MovieCard({ movie, onMovieClick }: MovieCardProps) {
           }}
           component="img"
           src={envConfig.apiUrl + movie.img}
+          alt={movie.name}
         />
         <CardContent>
           <Typography component="h3" variant="h6" fontWeight={600}>
@@ -32,7 +33,7 @@ export function MovieCard({ movie, onMovieClick }: MovieCardProps) {
             }}
           >
             {Object.entries(movie.userRatings).map(([site, rating]) => (
-              <Typography key={site}>
+              <Typography key={site} variant="body2" color="text.secondary">
                 {site} - {rating}
               </Typography>
             ))}
@@ -44,7 +45,7 @@ export function MovieCard({ movie, onMovieClick }: MovieCardProps) {
               width: '100%',
             }}
             variant="contained"
-            onClick={() => onMovieClick(movie.id)}
+            onClick={() => onMoreDetailsClick(movie.id)}
           >
             Подробнее
           </Button>
