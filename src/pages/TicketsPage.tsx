@@ -21,8 +21,7 @@ export function TicketsPage() {
   const { enqueueSnackbar } = useSnackbar();
   const cancelTicketMutation = useMutation({
     mutationFn: moviesApi.cancelTicket,
-    onSuccess: ({ data }) => {
-      console.log('@cancen scss', data);
+    onSuccess: () => {
       setOrderId(null);
       closeModal();
       enqueueSnackbar({ variant: 'success', message: 'Заказ отменен' });
@@ -69,7 +68,6 @@ export function TicketsPage() {
       tickets: normalizedTickets,
     };
   });
-  console.log('no', normalizedOrders);
 
   const getOrderStatusProps = (status: TicketStatus) => {
     const labelMap: { [Key in TicketStatus]: Pick<ChipProps, 'label' | 'color'> } = {
@@ -82,7 +80,6 @@ export function TicketsPage() {
         color: 'warning',
       },
     };
-    console.log('st', status, labelMap[status]);
 
     return labelMap[status];
   };

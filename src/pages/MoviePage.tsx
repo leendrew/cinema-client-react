@@ -116,6 +116,7 @@ export function MoviePage() {
     step !== BUY_TICKET_STEPS.person && step !== BUY_TICKET_STEPS.paymentSuccess;
 
   const [person, setPerson] = useState<BuyTicketPerson | null>(null);
+  // eslint-disable-next-line
   const [debitCard, setDebitCard] = useState<DebitCard | null>(null);
   const [payResponse, setPayResponse] = useState<BuyTicketResponse | null>(null);
 
@@ -353,6 +354,7 @@ export function MoviePage() {
 
   const onPaySubmit = buyTicketCardSubmit(async (data: BuyTicketCardSchema) => {
     setDebitCard(data);
+    console.log('debit card', debitCard);
 
     const serializedPerson = serializeData({ ...person }) as BuyTicketPerson;
     const tickets = Object.entries(selectedSeats!.seats).reduce((acc, [row, columns]) => {
