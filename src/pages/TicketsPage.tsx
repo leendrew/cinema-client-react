@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useQuery, useMutation } from '@tanstack/react-query';
-import { useSnackbar } from 'notistack';
+import { toast } from 'react-toastify';
 import { Box, Chip, CircularProgress, Grid, Stack, Typography } from '@mui/material';
 import type { ChipProps } from '@mui/material';
 import { Info as InfoIcon } from '@mui/icons-material';
@@ -18,19 +18,18 @@ export function TicketsPage() {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
-  const { enqueueSnackbar } = useSnackbar();
   const cancelTicketMutation = useMutation({
     mutationFn: moviesApi.cancelTicket,
     onSuccess: () => {
       setOrderId(null);
       closeModal();
-      enqueueSnackbar({ variant: 'success', message: 'Заказ отменен' });
+      toast.success('Заказ отменен');
     },
     // TODO: error typing support
     onError: (error: Error) => {
       // @ts-expect-error type issue
       const message = error.response.data.reason || ERROR_MESSAGE_API;
-      enqueueSnackbar({ variant: 'error', message });
+      toast.error(message);
     },
   });
 

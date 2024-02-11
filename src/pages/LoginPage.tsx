@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { useSnackbar } from 'notistack';
+import { toast } from 'react-toastify';
 import { useMutation } from '@tanstack/react-query';
 import { Controller, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -30,7 +30,6 @@ let OTP_RESEND_DELAY_MS = 5000;
 
 export function LoginPage() {
   const navigate = useNavigate();
-  const { enqueueSnackbar } = useSnackbar();
 
   const getOtpMutation = useMutation({
     mutationFn: authApi.getOtp,
@@ -43,7 +42,7 @@ export function LoginPage() {
     onError: (error: Error) => {
       // @ts-expect-error type issue
       const message = error.response.data.reason || ERROR_MESSAGE_API;
-      enqueueSnackbar({ variant: 'error', message });
+      toast.error(message);
     },
   });
   const loginMutation = useMutation({

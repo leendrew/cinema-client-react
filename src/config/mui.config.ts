@@ -10,4 +10,4 @@ export const muiConfig = createTheme({
   },
 });
 
-export const MAX_SNACKBAR_STACK = 3;
+export const TOAST_LIMIT = 3;

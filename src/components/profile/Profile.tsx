@@ -1,4 +1,4 @@
-import { useSnackbar } from 'notistack';
+import { toast } from 'react-toastify';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Controller, useForm } from 'react-hook-form';
 import { useMutation } from '@tanstack/react-query';
@@ -15,8 +15,6 @@ interface ProfileProps {
 }
 
 export function Profile({ user }: ProfileProps) {
-  const { enqueueSnackbar } = useSnackbar();
-
   const {
     handleSubmit,
     control,
@@ -37,7 +35,7 @@ export function Profile({ user }: ProfileProps) {
     onError: (error: Error) => {
       // @ts-expect-error type issue
       const message = error.response.data.reason || ERROR_MESSAGE_API;
-      enqueueSnackbar({ variant: 'error', message });
+      toast.error(message);
     },
   });
 

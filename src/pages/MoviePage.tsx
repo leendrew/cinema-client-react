@@ -35,7 +35,7 @@ import { envConfig } from '@/config';
 import { Controller, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { PatternFormat } from 'react-number-format';
-import { useSnackbar } from 'notistack';
+import { toast } from 'react-toastify';
 import { buyTicketCardSchema, buyTicketPersonSchema } from '@/shared/schemas/buy-ticket';
 import type { BuyTicketCardSchema, BuyTicketPersonSchema } from '@/shared/schemas/buy-ticket';
 import { ERROR_MESSAGE_API, serializeData } from '@/shared/schemas';
@@ -120,7 +120,6 @@ export function MoviePage() {
   const [debitCard, setDebitCard] = useState<DebitCard | null>(null);
   const [payResponse, setPayResponse] = useState<BuyTicketResponse | null>(null);
 
-  const { enqueueSnackbar } = useSnackbar();
   const buyTicketMutation = useMutation({
     mutationFn: moviesApi.buyTicket,
     onSuccess: ({ data }) => {
@@ -131,7 +130,7 @@ export function MoviePage() {
     onError: (error: Error) => {
       // @ts-expect-error type issue
       const message = error.response.data.reason || ERROR_MESSAGE_API;
-      enqueueSnackbar({ variant: 'error', message });
+      toast.error(message);
     },
   });
 
