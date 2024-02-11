@@ -1,8 +1,8 @@
-# Cinema Shift 2024 (Client)
+# Cinema (Client)
 
 [Backend](https://github.com/debabin/shift-backend)
 
-[Deployed](https://leendrew.github.io/cinema-shift-2024)
+[Deployed](https://leendrew.github.io/cinema-client-react)
 
 ## Stack
 
