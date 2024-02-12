@@ -32,11 +32,6 @@ export function Profile({ user }: ProfileProps) {
 
   const updateProfileMutation = useMutation({
     mutationFn: userApi.updateProfile,
-    onError: (error: Error) => {
-      // @ts-expect-error type issue
-      const message = error.response.data.reason || ERROR_MESSAGE_API;
-      toast.error(message);
-    },
   });
 
   const onSubmit = handleSubmit(async (data: ProfileSchema) => {

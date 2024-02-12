@@ -12,8 +12,6 @@ export const ERROR_MESSAGE = {
   maxNameLenBase: 'Поле не может быть больше',
 };
 
-export const ERROR_MESSAGE_API = 'Произошла ошибка';
-
 export const MAX_NAME_LEN = 60;
 
 export const ERROR_MESSAGE_MAX_NAME_LEN = `${ERROR_MESSAGE.maxNameLenBase} ${MAX_NAME_LEN} символов`;

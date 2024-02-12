@@ -35,10 +35,9 @@ import { envConfig } from '@/config';
 import { Controller, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { PatternFormat } from 'react-number-format';
-import { toast } from 'react-toastify';
 import { buyTicketCardSchema, buyTicketPersonSchema } from '@/shared/schemas/buy-ticket';
 import type { BuyTicketCardSchema, BuyTicketPersonSchema } from '@/shared/schemas/buy-ticket';
-import { ERROR_MESSAGE_API, serializeData } from '@/shared/schemas';
+import { serializeData } from '@/shared/schemas';
 
 // TODO: refactor: extract film info, schedule and seat pick; description 3 rows, expand action
 
@@ -125,12 +124,6 @@ export function MoviePage() {
     onSuccess: ({ data }) => {
       setPayResponse(data);
       nextStep();
-    },
-    // TODO: error typing support
-    onError: (error: Error) => {
-      // @ts-expect-error type issue
-      const message = error.response.data.reason || ERROR_MESSAGE_API;
-      toast.error(message);
     },
   });
 

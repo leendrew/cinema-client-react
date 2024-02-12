@@ -7,13 +7,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { PatternFormat } from 'react-number-format';
 import { TextField, Stack, Typography, Box } from '@mui/material';
 import { Button } from '@/shared/ui';
-import {
-  ERROR_MESSAGE_API,
-  getOtpSchema,
-  loginSchema,
-  MAX_OTP_LEN,
-  serializeData,
-} from '@/shared/schemas';
+import { getOtpSchema, loginSchema, MAX_OTP_LEN, serializeData } from '@/shared/schemas';
 import type { LoginSchema } from '@/shared/schemas';
 import { useTimer } from '@/shared/hooks';
 import { ROUTER_PATHS } from '@/shared/constants';
@@ -38,23 +32,12 @@ export function LoginPage() {
       setIsOtpSended(true);
       timer.start();
     },
-    // TODO: error typing support
-    onError: (error: Error) => {
-      // @ts-expect-error type issue
-      const message = error.response.data.reason || ERROR_MESSAGE_API;
-      toast.error(message);
-    },
   });
   const loginMutation = useMutation({
     mutationFn: authApi.login,
     onSuccess: ({ data }) => {
       authActions.setState({ user: data.user, token: data.token, isAuth: true });
       navigate(ROUTER_PATHS.main);
-    },
-    onError: (error) => {
-      // @ts-expect-error type issue
-      const message = error.response.data.reason || ERROR_MESSAGE_API;
-      toast.error(message);
     },
   });
 

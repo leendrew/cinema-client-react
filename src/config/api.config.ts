@@ -15,8 +15,6 @@ axios.interceptors.request.use((config) => {
   return config;
 });
 
-// TODO: unauthorized redirect to login
-
 export interface ApiResponseSuccess {
   success: true;
 }

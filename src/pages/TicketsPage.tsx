@@ -25,12 +25,6 @@ export function TicketsPage() {
       closeModal();
       toast.success('Заказ отменен');
     },
-    // TODO: error typing support
-    onError: (error: Error) => {
-      // @ts-expect-error type issue
-      const message = error.response.data.reason || ERROR_MESSAGE_API;
-      toast.error(message);
-    },
   });
 
   // TODO: skeleton
