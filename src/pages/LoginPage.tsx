@@ -54,8 +54,7 @@ export function LoginPage() {
     onError: (error) => {
       // @ts-expect-error type issue
       const message = error.response.data.reason || ERROR_MESSAGE_API;
-      enqueueSnackbar({ variant: 'error', message });
-      enqueueSnackbar({ variant: 'error', message: message });
+      toast.error(message);
     },
   });
 
@@ -85,7 +84,7 @@ export function LoginPage() {
   const getOtpCodeSubmit = async (data: Pick<LoginSchema, 'phone'>) => {
     const payload = serializeData(data);
     await getOtpMutation.mutateAsync(payload as GetOtpPayload);
-    enqueueSnackbar('Код отправлен', { variant: 'success' });
+    toast.success('Код отправлен');
   };
 
   const resendOtpCode = async () => {

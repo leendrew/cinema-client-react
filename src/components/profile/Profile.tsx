@@ -45,7 +45,7 @@ export function Profile({ user }: ProfileProps) {
     const serializedProfile = serializeData(profile);
     const payload = { phone: serializedPhone, profile: serializedProfile };
     await updateProfileMutation.mutateAsync(payload as UpdateProfilePayload);
-    enqueueSnackbar({ variant: 'success', message: 'Профиль обновлен' });
+    toast.success('Профиль обновлен');
   });
 
   return (
