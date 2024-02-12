@@ -51,7 +51,7 @@ export function TicketsPage() {
 
         return acc;
       },
-      {} as { [key: Seat['row']]: Seat['column'][] },
+      {} as Record<Seat['row'], Seat['column'][]>,
     );
 
     return {

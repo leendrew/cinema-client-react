@@ -47,7 +47,7 @@ type NormalizedHall = {
 };
 
 type PickedSeat = {
-  seats: { [key: Seat['row']]: (Pick<Seat, 'column'> & Pick<Place, 'price'>)[] };
+  seats: Record<Seat['row'], (Pick<Seat, 'column'> & Pick<Place, 'price'>)[]>;
   hallName: Hall['name'];
   movie: Pick<Movie, 'id' | 'name'>;
 } & Pick<BuyTicketPayload, 'seance'>;
