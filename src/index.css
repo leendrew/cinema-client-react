@@ -12,6 +12,11 @@
   box-sizing: border-box;
 }
 
+html,
+body {
+  height: 100%;
+}
+
 a {
   text-decoration: none;
 }
@@ -31,8 +36,12 @@ picture {
   shape-margin: 1rem;
 }
 
+main {
+  flex-grow: 1;
+}
+
 #root {
-  min-height: '100svh';
+  min-height: 100%;
 }
 
 .visually-hidden {
