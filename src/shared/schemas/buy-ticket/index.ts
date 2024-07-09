@@ -1,2 +1,2 @@
 export * from './buyTicketPerson.schema';
-export * from './buy-ticketCard.schema';
+export * from './buyTicketCard.schema';
