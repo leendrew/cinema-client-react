@@ -4,7 +4,6 @@ import { LoginPage, MainPage, MoviePage } from '@/pages';
 import { ROUTER_PATHS } from '@/shared/constants';
 
 export const publicRoutes = {
-  index: false,
   element: <MainLayout />,
   children: [
     {

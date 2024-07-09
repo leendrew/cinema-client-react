@@ -5,25 +5,17 @@ import { WithAuth } from '@/hocs';
 import { ROUTER_PATHS } from '@/shared/constants';
 
 export const privateRoutes = {
-  index: false,
   element: <WithAuth />,
   children: [
     {
-      path: ROUTER_PATHS.profile,
       element: <MainLayout />,
       children: [
         {
-          index: true,
+          path: ROUTER_PATHS.profile,
           element: <ProfilePage />,
         },
-      ],
-    },
-    {
-      path: ROUTER_PATHS.tickets,
-      element: <MainLayout />,
-      children: [
         {
-          index: true,
+          path: ROUTER_PATHS.tickets,
           element: <TicketsPage />,
         },
       ],
