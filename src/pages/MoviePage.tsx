@@ -366,7 +366,10 @@ export function MoviePage() {
   return (
     <>
       <Link to={ROUTER_PATHS.main}>
-        <Button variant="text" startIcon={<NavigateBeforeIcon />}>
+        <Button
+          variant="text"
+          startIcon={<NavigateBeforeIcon />}
+        >
           Назад
         </Button>
       </Link>
@@ -380,8 +383,16 @@ export function MoviePage() {
           <>
             {/* movie info */}
             <Box>
-              <Grid container spacing={4}>
-                <Grid item xs={12} sm={5} md={3}>
+              <Grid
+                container
+                spacing={4}
+              >
+                <Grid
+                  item
+                  xs={12}
+                  sm={5}
+                  md={3}
+                >
                   <Box
                     component="img"
                     sx={{
@@ -393,10 +404,22 @@ export function MoviePage() {
                     loading="lazy"
                   />
                 </Grid>
-                <Grid item xs={12} sm={7} md={9}>
-                  <Stack direction="column" gap={2}>
+                <Grid
+                  item
+                  xs={12}
+                  sm={7}
+                  md={9}
+                >
+                  <Stack
+                    direction="column"
+                    gap={2}
+                  >
                     <Box>
-                      <Typography component="h1" variant="h4" fontWeight={600}>
+                      <Typography
+                        component="h1"
+                        variant="h4"
+                        fontWeight={600}
+                      >
                         {movie.name}
                       </Typography>
                       <Typography
@@ -411,7 +434,11 @@ export function MoviePage() {
                     </Box>
                     <Box>
                       {Object.entries(movie.userRatings).map(([site, rating]) => (
-                        <Typography key={site} variant="body2" color="text.secondary">
+                        <Typography
+                          key={site}
+                          variant="body2"
+                          color="text.secondary"
+                        >
                           {site} - {rating}
                         </Typography>
                       ))}
@@ -428,6 +455,7 @@ export function MoviePage() {
               </Grid>
             </Box>
             {/* /movie info */}
+
             <Stack
               sx={{
                 marginTop: '3rem',
@@ -438,7 +466,11 @@ export function MoviePage() {
             >
               {/* schedule */}
               <Box>
-                <Typography component="h2" variant="h5" fontWeight={700}>
+                <Typography
+                  component="h2"
+                  variant="h5"
+                  fontWeight={700}
+                >
                   Расписание
                 </Typography>
                 {!isMovieHasSeances && (
@@ -453,7 +485,13 @@ export function MoviePage() {
                       onChange={onDateTabChange}
                     >
                       {!!dates?.length &&
-                        dates?.map((date, index) => <Tab key={date} label={date} value={index} />)}
+                        dates?.map((date, index) => (
+                          <Tab
+                            key={date}
+                            label={date}
+                            value={index}
+                          />
+                        ))}
                     </Tabs>
                     <Stack
                       sx={{
@@ -493,7 +531,11 @@ export function MoviePage() {
               {/* /schedule */}
               {/* pick seat */}
               <Box>
-                <Typography component="h2" variant="h5" fontWeight={700}>
+                <Typography
+                  component="h2"
+                  variant="h5"
+                  fontWeight={700}
+                >
                   Выбор места
                 </Typography>
                 <Grid
@@ -504,15 +546,25 @@ export function MoviePage() {
                   spacing={4}
                 >
                   {!seats && (
-                    <Grid item xs={12}>
+                    <Grid
+                      item
+                      xs={12}
+                    >
                       <Typography>Для выбора места выберите сеанс</Typography>
                     </Grid>
                   )}
                   {seats && (
                     <>
                       {/* left part */}
-                      <Grid item xs={12} md={6}>
-                        <Stack direction="column" gap={3}>
+                      <Grid
+                        item
+                        xs={12}
+                        md={6}
+                      >
+                        <Stack
+                          direction="column"
+                          gap={3}
+                        >
                           <Box>
                             <Typography
                               sx={{
@@ -588,16 +640,29 @@ export function MoviePage() {
                       {/* right part */}
                       {hasSelectedSeats && (
                         <>
-                          <Grid item xs={12} md={6}>
-                            <Stack direction="column" gap={3}>
+                          <Grid
+                            item
+                            xs={12}
+                            md={6}
+                          >
+                            <Stack
+                              direction="column"
+                              gap={3}
+                            >
                               <Box>
-                                <Typography variant="caption" color="text.secondary">
+                                <Typography
+                                  variant="caption"
+                                  color="text.secondary"
+                                >
                                   Зал
                                 </Typography>
                                 <Typography>{selectedSeats.hallName}</Typography>
                               </Box>
                               <Box>
-                                <Typography variant="caption" color="text.secondary">
+                                <Typography
+                                  variant="caption"
+                                  color="text.secondary"
+                                >
                                   Дата и время
                                 </Typography>
                                 <Typography>
@@ -605,7 +670,10 @@ export function MoviePage() {
                                 </Typography>
                               </Box>
                               <Box>
-                                <Typography variant="caption" color="text.secondary">
+                                <Typography
+                                  variant="caption"
+                                  color="text.secondary"
+                                >
                                   Места
                                 </Typography>
                                 {Object.entries(selectedSeats.seats).map(([row, column]) => {
@@ -619,7 +687,10 @@ export function MoviePage() {
                                   );
                                 })}
                               </Box>
-                              <Typography variant="h5" fontWeight={700}>
+                              <Typography
+                                variant="h5"
+                                fontWeight={700}
+                              >
                                 Сумма: {totalPrice} ₽
                               </Typography>
                               <Box
@@ -669,10 +740,16 @@ export function MoviePage() {
                                     gap={3}
                                     onSubmit={onSubmit}
                                   >
-                                    <Typography variant="h5" fontWeight={700}>
+                                    <Typography
+                                      variant="h5"
+                                      fontWeight={700}
+                                    >
                                       Введите ваши даные
                                     </Typography>
-                                    <Stack direction="column" gap={1}>
+                                    <Stack
+                                      direction="column"
+                                      gap={1}
+                                    >
                                       <Typography>Имя*</Typography>
                                       <Controller
                                         name="firstname"
@@ -688,7 +765,10 @@ export function MoviePage() {
                                         )}
                                       />
                                     </Stack>
-                                    <Stack direction="column" gap={1}>
+                                    <Stack
+                                      direction="column"
+                                      gap={1}
+                                    >
                                       <Typography>Фамилия*</Typography>
                                       <Controller
                                         name="lastname"
@@ -704,7 +784,10 @@ export function MoviePage() {
                                         )}
                                       />
                                     </Stack>
-                                    <Stack direction="column" gap={1}>
+                                    <Stack
+                                      direction="column"
+                                      gap={1}
+                                    >
                                       <Typography>Отчество</Typography>
                                       <Controller
                                         name="middlename"
@@ -720,7 +803,10 @@ export function MoviePage() {
                                         )}
                                       />
                                     </Stack>
-                                    <Stack direction="column" gap={1}>
+                                    <Stack
+                                      direction="column"
+                                      gap={1}
+                                    >
                                       <Typography>Телефон*</Typography>
                                       <Controller
                                         name="phone"
@@ -767,10 +853,16 @@ export function MoviePage() {
                                     gap={3}
                                     onSubmit={onPaySubmit}
                                   >
-                                    <Typography variant="h5" fontWeight={700}>
+                                    <Typography
+                                      variant="h5"
+                                      fontWeight={700}
+                                    >
                                       Введите данные карты для оплаты
                                     </Typography>
-                                    <Stack direction="column" gap={1}>
+                                    <Stack
+                                      direction="column"
+                                      gap={1}
+                                    >
                                       <Typography>Номер*</Typography>
                                       <Controller
                                         name="pan"
@@ -789,7 +881,10 @@ export function MoviePage() {
                                         )}
                                       />
                                     </Stack>
-                                    <Stack direction="column" gap={1}>
+                                    <Stack
+                                      direction="column"
+                                      gap={1}
+                                    >
                                       <Typography>Срок*</Typography>
                                       <Controller
                                         name="expireDate"
@@ -808,7 +903,10 @@ export function MoviePage() {
                                         )}
                                       />
                                     </Stack>
-                                    <Stack direction="column" gap={1}>
+                                    <Stack
+                                      direction="column"
+                                      gap={1}
+                                    >
                                       <Typography>CVV*</Typography>
                                       <Controller
                                         name="cvv"
@@ -878,19 +976,28 @@ export function MoviePage() {
                                       Оплата прошла успешно!
                                     </Typography>
                                     <Stack direction="column">
-                                      <Typography variant="caption" color="text.secondary">
+                                      <Typography
+                                        variant="caption"
+                                        color="text.secondary"
+                                      >
                                         Номер заказа
                                       </Typography>
                                       <Typography>{payResponse?.order.orderNumber}</Typography>
                                     </Stack>
                                     <Stack direction="column">
-                                      <Typography variant="caption" color="text.secondary">
+                                      <Typography
+                                        variant="caption"
+                                        color="text.secondary"
+                                      >
                                         Фильм
                                       </Typography>
                                       <Typography>{movie.name}</Typography>
                                     </Stack>
                                     <Stack direction="column">
-                                      <Typography variant="caption" color="text.secondary">
+                                      <Typography
+                                        variant="caption"
+                                        color="text.secondary"
+                                      >
                                         Дата
                                       </Typography>
                                       <Typography>
@@ -898,13 +1005,19 @@ export function MoviePage() {
                                       </Typography>
                                     </Stack>
                                     <Stack direction="column">
-                                      <Typography variant="caption" color="text.secondary">
+                                      <Typography
+                                        variant="caption"
+                                        color="text.secondary"
+                                      >
                                         Время
                                       </Typography>
                                       <Typography>{selectedSeats.seance.time}</Typography>
                                     </Stack>
                                     <Stack direction="column">
-                                      <Typography variant="caption" color="text.secondary">
+                                      <Typography
+                                        variant="caption"
+                                        color="text.secondary"
+                                      >
                                         Места
                                       </Typography>
                                       {Object.entries(selectedSeats.seats).map(([row, column]) => {

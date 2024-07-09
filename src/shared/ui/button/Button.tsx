@@ -8,11 +8,21 @@ interface ButtonProps extends MuiButtonProps {
 
 export function Button({ loading = false, loadingText, children, disabled, ...rest }: ButtonProps) {
   return (
-    <MuiButton disabled={disabled || loading} {...rest}>
-      <Stack direction="row" alignItems="center" gap={1}>
+    <MuiButton
+      disabled={disabled || loading}
+      {...rest}
+    >
+      <Stack
+        direction="row"
+        alignItems="center"
+        gap={1}
+      >
         {loading && (
           <>
-            <CircularProgress color="inherit" size="1rem" />
+            <CircularProgress
+              color="inherit"
+              size="1.5rem"
+            />
             {loadingText}
           </>
         )}

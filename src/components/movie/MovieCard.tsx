@@ -21,10 +21,17 @@ export function MovieCard({ movie, onMoreDetailsClick }: MovieCardProps) {
           alt={movie.name}
         />
         <CardContent>
-          <Typography component="h3" variant="h6" fontWeight={600}>
+          <Typography
+            component="h3"
+            variant="h6"
+            fontWeight={600}
+          >
             {movie.name}
           </Typography>
-          <Typography variant="body2" color="text.secondary">
+          <Typography
+            variant="body2"
+            color="text.secondary"
+          >
             {movie.genres.join(', ')}
           </Typography>
           <Box
@@ -33,7 +40,11 @@ export function MovieCard({ movie, onMoreDetailsClick }: MovieCardProps) {
             }}
           >
             {Object.entries(movie.userRatings).map(([site, rating]) => (
-              <Typography key={site} variant="body2" color="text.secondary">
+              <Typography
+                key={site}
+                variant="body2"
+                color="text.secondary"
+              >
                 {site} - {rating}
               </Typography>
             ))}

@@ -54,10 +54,17 @@ export function Profile({ user }: ProfileProps) {
         gap={3}
         onSubmit={onSubmit}
       >
-        <Typography component="h2" variant="h5" fontWeight={700}>
+        <Typography
+          component="h2"
+          variant="h5"
+          fontWeight={700}
+        >
           Профиль
         </Typography>
-        <Stack direction="column" gap={1}>
+        <Stack
+          direction="column"
+          gap={1}
+        >
           <Typography>Имя*</Typography>
           <Controller
             name="firstname"
@@ -73,7 +80,10 @@ export function Profile({ user }: ProfileProps) {
             )}
           />
         </Stack>
-        <Stack direction="column" gap={1}>
+        <Stack
+          direction="column"
+          gap={1}
+        >
           <Typography>Фамилия*</Typography>
           <Controller
             name="lastname"
@@ -89,7 +99,10 @@ export function Profile({ user }: ProfileProps) {
             )}
           />
         </Stack>
-        <Stack direction="column" gap={1}>
+        <Stack
+          direction="column"
+          gap={1}
+        >
           <Typography>Отчество</Typography>
           <Controller
             name="middlename"
@@ -105,7 +118,10 @@ export function Profile({ user }: ProfileProps) {
             )}
           />
         </Stack>
-        <Stack direction="column" gap={1}>
+        <Stack
+          direction="column"
+          gap={1}
+        >
           <Typography>Телефон*</Typography>
           <Controller
             name="phone"
@@ -124,7 +140,10 @@ export function Profile({ user }: ProfileProps) {
             )}
           />
         </Stack>
-        <Stack direction="column" gap={1}>
+        <Stack
+          direction="column"
+          gap={1}
+        >
           <Typography>Email</Typography>
           <Controller
             name="email"

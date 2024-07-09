@@ -109,7 +109,11 @@ export function LoginPage() {
         gap={3}
         onSubmit={onSubmit}
       >
-        <Typography component="h2" variant="h5" fontWeight={700}>
+        <Typography
+          component="h2"
+          variant="h5"
+          fontWeight={700}
+        >
           Авторизация
         </Typography>
         <Typography variant="body1">Введите номер телефона для входа в личный кабинет</Typography>
@@ -189,7 +193,10 @@ export function LoginPage() {
         )}
       </Stack>
       {isOtpSended && (
-        <Link to={OTP_PAGE_URL} target="_blank">
+        <Link
+          to={OTP_PAGE_URL}
+          target="_blank"
+        >
           Посмотреть код
         </Link>
       )}

@@ -22,7 +22,12 @@ export function Header() {
         }}
       >
         <Container sx={{ height: '100%' }}>
-          <Stack sx={{ height: '100%' }} direction="row" alignItems="center" gap={4}>
+          <Stack
+            sx={{ height: '100%' }}
+            direction="row"
+            alignItems="center"
+            gap={4}
+          >
             <Link to={ROUTER_PATHS.main}>
               <Box sx={{ width: 102, height: 39 }}>
                 <LogoIcon style={{ width: '100%', height: '100%' }} />
@@ -45,7 +50,11 @@ export function Header() {
             >
               {isAuth && (
                 <Link to={ROUTER_PATHS.auth.login}>
-                  <Button variant="text" startIcon={<LogoutIcon />} onClick={onLogoutClick}>
+                  <Button
+                    variant="text"
+                    startIcon={<LogoutIcon />}
+                    onClick={onLogoutClick}
+                  >
                     Выйти
                   </Button>
                 </Link>

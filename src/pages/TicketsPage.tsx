@@ -91,15 +91,31 @@ export function TicketsPage() {
 
   return (
     <>
-      <Stack direction="column" gap={3}>
-        <Typography component="h2" variant="h5" fontWeight={700}>
+      <Stack
+        direction="column"
+        gap={3}
+      >
+        <Typography
+          component="h2"
+          variant="h5"
+          fontWeight={700}
+        >
           Билеты
         </Typography>
-        <Grid container spacing={3}>
+        <Grid
+          container
+          spacing={3}
+        >
           {!normalizedOrders?.length && <Typography>У вас нет оплаченных билетов</Typography>}
           {!!normalizedOrders?.length &&
             normalizedOrders.map((order) => (
-              <Grid key={order._id} item xs={12} sm={6} md={4}>
+              <Grid
+                key={order._id}
+                item
+                xs={12}
+                sm={6}
+                md={4}
+              >
                 <Stack
                   sx={{
                     borderBottom: '0.0625rem',
@@ -131,7 +147,10 @@ export function TicketsPage() {
                         }}
                         direction="column"
                       >
-                        <Typography component="h3" variant="h5">
+                        <Typography
+                          component="h3"
+                          variant="h5"
+                        >
                           {order.film.id}
                         </Typography>
                         {Object.entries(order.tickets).map(([row, columns]) => {
@@ -147,14 +166,23 @@ export function TicketsPage() {
                       </Stack>
                     </>
                   )}
-                  <Stack direction="row" justifyContent="space-between">
+                  <Stack
+                    direction="row"
+                    justifyContent="space-between"
+                  >
                     <Chip {...getOrderStatusProps(order.status)} />
-                    <Typography variant="body2" color="text.secondary">
+                    <Typography
+                      variant="body2"
+                      color="text.secondary"
+                    >
                       код билета {order.orderNumber}
                     </Typography>
                   </Stack>
                   {order.status !== 'CANCELED' && (
-                    <Button variant="outlined" onClick={() => onCancelOrderClick(order._id)}>
+                    <Button
+                      variant="outlined"
+                      onClick={() => onCancelOrderClick(order._id)}
+                    >
                       Вернуть билет
                     </Button>
                   )}
@@ -164,9 +192,15 @@ export function TicketsPage() {
         </Grid>
       </Stack>
       {
-        <Modal open={isModalOpen} onClose={closeModal}>
+        <Modal
+          open={isModalOpen}
+          onClose={closeModal}
+        >
           <>
-            <Stack direction="column" gap={2}>
+            <Stack
+              direction="column"
+              gap={2}
+            >
               <Box
                 sx={{
                   width: '3.5rem',
